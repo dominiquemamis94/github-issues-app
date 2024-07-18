@@ -1,66 +1,84 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# GitHub Issues Viewer App
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This web application allows GitHub users to view their open issues from a specified repository.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- List all open issues assigned to the logged-in GitHub user.
+- View detailed information about a specific issue.
+- Navigate back to the list of issues from the detailed view.
+- Uses GitHub API for fetching issue data.
+- Bootstrap integration for responsive design.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Prerequisites
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Before you begin, ensure you have the following installed:
 
-## Learning Laravel
+- PHP (>= 7.4)
+- Composer
+- SQLite or any other supported database driver by Laravel (if not using SQLite)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Setup Instructions
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+1. **Clone the repository:**
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+   ```bash
+   git clone https://github.com/your_github_username/github-issues-app.git
+   cd github-issues-app
+2. **Install dependencies:**
 
-## Laravel Sponsors
+    ```bash
+    Copy code
+    composer install
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+3. **Setup Environment Variables:**
+Create a copy of .env.example and rename it to .env:
+    ```bash
+    Copy code
+    cp .env.example .env
 
-### Premium Partners
+Edit the .env file and configure the following settings:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+    APP_NAME - Name of your application.
+    APP_ENV - Environment mode (local or production).
+    APP_KEY - Generate using php artisan key:generate.
+    GITHUB_PERSONAL_TOKEN - Your GitHub Personal Access Token with necessary scopes.
+    GITHUB_USERNAME - Your Github Username
+    GITHUB_REPO - The repository you want to access
 
-## Contributing
+4. **Generate Application Key:**
+   ```bash
+    Copy code
+    php artisan key:generate
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+5. **Run Migrations (if using SQLite):**
 
-## Code of Conduct
+If you are using SQLite as your database, run the migrations to create the necessary tables:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    
+    Copy code
+    php artisan migrate
+    
+6. **Start the Development Server:**
 
-## Security Vulnerabilities
+    ```bash
+    Copy code
+    php artisan serve
+The application will be available at http://localhost:8000.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Usage
+Access the application in your web browser.
+Log in using your GitHub credentials.
+Navigate to view all open issues assigned to you in a specific GitHub repository.
+Click on an issue to view its details.
+Use the back button to return to the list of issues.
+
+## Additional Notes
+Ensure that your .env file is properly configured, especially the GITHUB variables.
+This application uses Bootstrap for styling. You can customize the styles further as needed in resources/sass or resources/css files.
+Troubleshooting
+If you encounter any issues, check the Laravel documentation or GitHub API documentation for assistance.
+Verify your internet connection and GitHub Personal Access Token validity.
 
 ## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is licensed under the MIT License - see the LICENSE file for details.
